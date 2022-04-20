@@ -1,0 +1,95 @@
+@import '../abstract/mixins';
+
+.header{
+    @include box(100%, 115px);
+    display: grid;
+    align-items: center;
+    justify-content: flex-start;
+
+    grid-template-areas: "esquerda centro direita";
+    grid-template-columns: 20% 1fr 180px;
+    gap: 1rem;
+
+    padding: 0 10%;
+
+    &__logo{
+        @include box(100%, auto);
+
+        grid-area: esquerda;
+        max-width: 180px;
+    }
+
+    &__wrapper{
+        @include box(75%, 40px);
+        @include pseudo(after, '\f002'){
+            color: #a2a2a2; 
+            top: 50%;
+            right: 1rem;
+            font-family: "Font Awesome 5 Free"; 
+            font-weight: 900; 
+            transform: translate(0%, -50%);
+        } 
+
+        .header__input{
+            @include box(100%, 100%);
+            @include font(14px, 400, #464646);
+            background-color: #f5f5f5;
+            border: none;
+            border-radius: 20px;
+            grid-area: centro;
+            padding: 12px 16px;
+    
+            &:placeholder{
+                color: #a2a2a2;
+            } 
+        }
+    }
+
+    button{
+        @include box(auto, auto);
+        @include font(14px, 400, #2A7AE4);
+        background-color: transparent;
+        border: 1px solid #2A7AE4;
+        grid-area: direita;
+        min-width: 180px;
+        padding: 14px;
+        width: 100%;
+    }
+
+    //--------MEDIA QUERIES--------MEDIA QUERIES--------MEDIA QUERIES--------MEDIA QUERIES--------//
+
+    //TABLET MODE
+    @include media(768px){
+        height: 72px;
+        padding: 0 2rem;
+
+        &__logo{  min-width: 100px }
+
+        &__wrapper{  width: 90%  }
+    }
+
+    //MOBILE MODE//
+    @include media(620px){
+        grid-template-columns: 1fr 1fr 10%;
+        padding: 0 1rem;
+
+        &__wrapper{
+            grid-area: direita;
+            width: 100%;
+
+            .header__input{  display: none  }
+
+            &::after{
+                color: #464646;
+                right: 10px;
+                top: 50%;
+            }
+        }
+
+        &__button{
+            grid-area: centro !important;
+            min-width: 130px;
+        }
+    }
+}
+

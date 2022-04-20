@@ -1,0 +1,53 @@
+@import '../abstract/mixins';
+
+.banner{
+    @include box(100%, 350px);
+    //Escurecendo a imagem com um gradiente de uma cor
+    background-image: linear-gradient(rgba(black, 0.3)), url(../images/banner.png);
+    background-position: center;
+    background-size: cover;
+    
+    padding: 2rem 0rem 2rem 10rem;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+
+    .banner-wrapper{
+        //Tudo que estiver dentro deste elemento...
+        & > *{
+            margin-top: 1rem;
+            color: white; 
+        }
+
+        h2{  @include font(52px, 700, white)  }
+
+        p{  @include font(22px, 600, white)  }
+
+        button{
+            @include box(130px, 50px);
+            @include font(16px, 600, white);
+            background-color: #2A7AE4;
+            border: none;
+        }
+    }
+
+    //--------MEDIA QUERIES--------MEDIA QUERIES--------MEDIA QUERIES--------MEDIA QUERIES--------//    
+
+    //TABLET MODE
+    @include media(768px){  padding: 2rem;  }
+
+    //MOBILE MODE
+    @include media(620px){ 
+        height: 200px;
+        padding: 1rem;
+        
+        h2{
+            font-size: 22px !important;
+        }
+
+        p, button{
+            font-size: 14px !important;
+        }
+    }
+}

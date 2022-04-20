@@ -1,0 +1,27 @@
+@mixin box($width, $height){
+    box-sizing: border-box;
+    width: $width;
+    height: $height;
+}
+
+@mixin pseudo($loc, $content){
+    position: relative;
+
+    &::#{$loc}{
+        content: $content;
+        position: absolute;
+        @content;
+    }
+}
+
+@mixin font($size, $weight, $color){
+    font-size: $size;
+    font-weight: $weight;
+    color: $color;
+}
+
+@mixin media($width){
+    @media only screen and (max-width: $width){
+        @content;
+    }
+}
