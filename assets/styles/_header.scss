@@ -1,4 +1,4 @@
-@import '../abstract/mixins';
+@import './abstract/mixins';
 
 .header{
     @include box(100%, 115px);
@@ -14,7 +14,7 @@
 
     &__logo{
         @include box(100%, auto);
-
+        cursor: pointer;
         grid-area: esquerda;
         max-width: 180px;
     }
@@ -22,6 +22,7 @@
     &__wrapper{
         @include box(75%, 40px);
         @include pseudo(after, '\f002'){
+            cursor: pointer;
             color: #a2a2a2; 
             top: 50%;
             right: 1rem;
@@ -45,11 +46,12 @@
         }
     }
 
-    button{
+    &__button{
         @include box(auto, auto);
         @include font(14px, 400, #2A7AE4);
         background-color: transparent;
         border: 1px solid #2A7AE4;
+        cursor: pointer;
         grid-area: direita;
         min-width: 180px;
         padding: 14px;
@@ -87,7 +89,7 @@
         }
 
         &__button{
-            grid-area: centro !important;
+            grid-area: centro ;
             min-width: 130px;
         }
     }

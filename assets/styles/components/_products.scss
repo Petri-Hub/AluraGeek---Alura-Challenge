@@ -1,0 +1,85 @@
+@import '../abstract/mixins';
+
+.products-section{
+    @include box(100%, auto);
+    padding: 0rem 9rem;
+    margin: 4rem 0;
+
+    &__header{
+        @include box(100%, auto);
+        @include flex(space-between, center);
+        margin: 0.25rem 0;
+        
+        &__title{  @include font(32px, 700, #464646)  }
+
+        &__button{
+            @include font(16px, 700, #2A7AE4);
+            @include flex(center, center, row);
+            background: none;
+            border: none;
+            cursor: pointer;
+
+            i{
+                @include font(20px, 900, #2A7AE4);
+                margin-left: .5rem;
+            }
+        }
+    }
+
+    &__content{
+        display: grid;
+        width: 100%;
+        gap: 1rem;
+        grid-template-rows: auto;
+        grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr;
+
+        .product{
+            &:nth-child(n+7){  display: none;  }
+
+            & > * {  margin-top: 0.5rem;  }
+
+            &-image{
+                width: 100%;
+                //Infelizmente essa propriedade ainda não é suportada por muitos browsers...
+                aspect-ratio: 1/1;
+                object-fit: cover;
+            }
+
+            &-name{  @include font(14px, 400, #464646)  }
+
+            &-price{  @include font(16px, 700, #464646)  }
+
+            &-button{
+                @include font(16px, 700, #2A7AE4);
+                background-color: transparent;
+                border: none;
+                padding: 0;
+                cursor: pointer;
+            }
+        }
+    }
+
+    //--------MEDIA QUERIES--------MEDIA QUERIES--------MEDIA QUERIES--------MEDIA QUERIES--------//
+
+    //TABLET MODE
+    @include media(1024px){
+        padding: 0 2rem;
+
+        //Trocando o Grid para menos elementos
+        &__content{  grid-template-columns: 1fr 1fr 1fr 1fr  }
+
+        //Escondendo os elementos em excesso
+        .product{  &:nth-child(n+5){  display: none;  }  }
+    }
+
+    //MOBILE MODE
+    @include media(620px){
+        padding: 0 1rem;
+
+        //Trocando o Grid para menos elementos
+        &__content{  grid-template-columns: 1fr 1fr}
+
+        //Escondendo os elementos em excesso
+        .product{  &:nth-child(n+3){  display: none;  }  }
+    }
+} 

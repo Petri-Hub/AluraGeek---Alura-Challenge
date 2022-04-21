@@ -1,4 +1,4 @@
-@import '../abstract/mixins';
+@import './abstract/mixins';
 
 .banner{
     @include box(100%, 350px);
@@ -20,15 +20,16 @@
             color: white; 
         }
 
-        h2{  @include font(52px, 700, white)  }
+        .banner-title{  @include font(46px, 700, white)  }
 
-        p{  @include font(22px, 600, white)  }
+        .banner-desc{  @include font(22px, 600, white)  }
 
-        button{
+        .banner-button{
             @include box(130px, 50px);
             @include font(16px, 600, white);
             background-color: #2A7AE4;
             border: none;
+            cursor: pointer;
         }
     }
 
@@ -42,11 +43,11 @@
         height: 200px;
         padding: 1rem;
         
-        h2{
+        .banner-title{
             font-size: 22px !important;
         }
 
-        p, button{
+        .banner-desc, .banner-buttton{
             font-size: 14px !important;
         }
     }

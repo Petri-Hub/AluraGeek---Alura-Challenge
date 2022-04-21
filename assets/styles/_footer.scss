@@ -1,0 +1,131 @@
+@import './abstract/mixins';
+
+.footer{
+    .footer-more{
+        display: grid;
+        grid-template-areas: 
+            "image list form"
+            "image list form"
+        ;
+        column-gap: 1rem;
+        grid-template-columns: 1fr 1fr 2fr;
+        background-color: #EAF2FD;
+        padding: 4rem 9rem;
+
+        @include media(1050px){
+            padding: 2rem;
+            grid-template-areas:
+                "image form form"
+                "list form form"
+            ;
+        }
+
+        @include media(500px){
+            padding: 1rem;
+            grid-template-areas:
+                "image image image"
+                "list list list"
+                "form form form"
+            ;
+        }
+    }
+    
+
+    &__image{
+        grid-area: image;
+        min-width: 180px;
+    }
+
+    &__links{
+        @include box(100%, auto);
+        grid-area: list;
+        
+        .footer__link{
+            margin: 24px 0;
+            
+            a{
+                @include font(16px, 500, #464646);
+                text-decoration: none;
+            }
+
+            @include media(500px){
+                text-align: center;
+            }
+        }
+    }
+
+    &__form{
+        grid-area: form;
+
+        &__title{
+            @include font(16px, 700, #464646);
+            margin-bottom: 8px;
+        }
+
+        .form{
+            @include flex(flex-start, flex-start, column);
+
+            &__input-wrapper{
+                @include box(100%, auto);
+                position: relative;
+                @include pseudo(before, 'Nome'){
+                    @include font(12px, 400, #a2a2a2);
+                    top: 12px;
+                    left: 12px;
+                }
+            }
+
+            &__nome, &__msg{
+                @include font(16px, 400, #A2A2A2);
+                border-radius: 0;
+                width: 100%;
+                border: none;
+                background-color: white;
+                padding: 24px 12px;
+                color: #464646;
+                border-radius: 0 0 4px 4px;
+                border-bottom: 1px solid #C8C8C8;
+                vertical-align: text-bottom;
+
+                &::placeholder{  color: #A2A2A2;  }
+            }
+
+            &__nome{
+                @include box(100%, 0px);
+                padding-top: 40px;
+                vertical-align: bottom;
+                margin-bottom: 16px;
+            }
+
+            &__msg{
+                @include box(100%, 0);
+                resize: none;
+                overflow-y: scroll;
+                word-break: break-all;
+                padding-bottom: 66px;
+                vertical-align: bottom;
+                margin-bottom: 8px;
+            }
+
+            &__button{
+                @include font(16px, 400, white);
+                border: none;
+                background-color: #2A7AE4;
+                color: white;
+                padding: 16px;
+                cursor: pointer;
+            }
+        }
+    }
+
+    .footer__developed{
+        @include box(100%, 100px);
+        @include font(16px, 600, #464646);
+        display: grid; 
+        place-items: center;
+        background-color: white;
+
+    }
+
+
+}
